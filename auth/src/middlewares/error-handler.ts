@@ -10,7 +10,8 @@ export const errorHandler = (
   next : NextFunction
 ) => {
  
-  if(err instanceof RequestValidationError){   
+  if(err instanceof RequestValidationError){  
+    console.log('in error handler, making life easy'); 
     return res.status(err.statusCode).send(err.serializeError());
   }
 

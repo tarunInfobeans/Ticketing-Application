@@ -19,12 +19,9 @@ app.use(signout);
 app.all('*', () => {
   console.log('I am heererererer');
   throw new NotFoundError();
-})
-app.use(errorHandler);
-
-app.get('/api/users/currentusers', (req,res) => {
-  res.send('hi there..');
 });
+
+app.use(errorHandler);
 
 const start = async () => {
   try {

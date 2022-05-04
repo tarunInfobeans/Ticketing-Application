@@ -2,7 +2,6 @@ import express, { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
 import { RequestValidationError } from '../error/request-validation-error';
 
-
 const router = express.Router();
 
 router.post('/api/users/signup',  [
@@ -16,7 +15,7 @@ router.post('/api/users/signup',  [
 ], (req : Request, res : Response) => {
   
   const errors = validationResult(req);
-  console.log('i am here then xyzqwerty....');
+  
   if(!errors.isEmpty()){
     //throw new Error('something wrong with password or email or both');
     /** suppose this is javascript & not ts
@@ -24,7 +23,6 @@ router.post('/api/users/signup',  [
      * error.reason = errors.Array();
      * throw error;
      */
-    console.log('i am here then....');
     throw new RequestValidationError(errors.array());
   }
 
@@ -33,6 +31,7 @@ router.post('/api/users/signup',  [
   // throw new DatabaseConnectionError();
   // throw new Error();
   
+  //throw new Error();
   //throw new Error();
 
   const { email, password } =  req.body;
