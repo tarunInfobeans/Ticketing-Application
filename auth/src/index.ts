@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import { json } from 'body-parser';
 import { currentUserRouter } from './routes/current-user';
 import { signin } from './routes/signin';
@@ -6,7 +7,6 @@ import { signout } from './routes/signout';
 import { signup } from './routes/signup';
 import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './error/not-found-error';
-import mongoose from 'mongoose';
 
 const app = express();
 app.use(json());
@@ -24,7 +24,7 @@ app.all('*', () => {
 app.use(errorHandler);
 
 const start = async () => {
-  try {
+  try{
     await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
     console.log('connected to mongodb');
   }
